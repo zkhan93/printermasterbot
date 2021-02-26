@@ -5,7 +5,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
 logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.DEBUG
 )
 
 logger = logging.getLogger("bot")
@@ -43,6 +43,7 @@ def print_msg(update, context):
 
 def print_file(file):
     logger.info(f"printing {file}")
+    logger.debug(f"/usr/bin/lp {printer} {file}")
     logger.info(os.system(f"/usr/bin/lp {printer} {file}"))
 
 

@@ -5,12 +5,11 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
 logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.DEBUG
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
 
 logger = logging.getLogger("bot")
 
-printer = os.getenv("PRINTER_NAME")
 token = os.getenv("TOKEN")
 allowed_usernames = os.getenv("ALLOWED_USERNAMES", "").split()
 updater = Updater(token=token, use_context=True)
@@ -43,8 +42,8 @@ def print_msg(update, context):
 
 def print_file(file):
     logger.info(f"printing {file}")
-    logger.debug(f"/usr/bin/lp {printer} {file}")
-    logger.info(os.system(f"/usr/bin/lp {printer} {file}"))
+    logger.debug(f"/usr/bin/lp {file}")
+    logger.info(os.system(f"/usr/bin/lp {file}"))
 
 
 start_handler = CommandHandler("start", start)

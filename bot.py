@@ -42,8 +42,8 @@ def print_msg(update, context):
 
 def print_file(file):
     logger.info(f"printing {file}")
-    logger.debug(f"/usr/bin/lp {file}")
-    logger.info(os.system(f"/usr/bin/lp {file}"))
+    logger.debug(f"/usr/bin/lp -o fit-to-page -o media=A4 {file}")
+    logger.info(os.system(f"/usr/bin/lp -o fit-to-page -o media=A4 {file}"))
 
 
 start_handler = CommandHandler("start", start)

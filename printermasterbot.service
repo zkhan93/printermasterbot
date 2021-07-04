@@ -1,0 +1,10 @@
+[Unit]
+Description=telegram bot for printing
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/printermasterbot
+ExecStart=/home/pi/.local/bin/pipenv run python bot.py
+
+[Install]
+WantedBy=multi-user.target

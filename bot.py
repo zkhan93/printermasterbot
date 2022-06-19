@@ -19,7 +19,16 @@ dispatcher = updater.dispatcher
 def start(update, context):
     context.bot.send_message(
         chat_id=update.effective_chat.id,
-        text="I'm printermaster, send me a photo or document to print!",
+        text="I'm Printer, send me a photo or document to print!",
+    )
+
+
+def clean(update, context):
+    if os.path.exists("data"):
+        os.system("rm -f ./data/*")
+    context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text="Cleaning up old downloaded files from data folder",
     )
 
 
@@ -48,6 +57,11 @@ def print_file(file):
 
 start_handler = CommandHandler("start", start)
 dispatcher.add_handler(start_handler)
+
+clean_handler = CommandHandler(
+    "clean", clean, filters=Filters.chat(username=allowed_usernames)
+)
+dispatcher.add_handler(clean_handler)
 
 print_handler = MessageHandler(
     Filters.chat(username=allowed_usernames)

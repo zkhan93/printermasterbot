@@ -41,3 +41,28 @@ I'm not sure how to containerize it
 
 - lp command must be missing
 - do I have to forward USB devices ?
+
+
+
+
+
+
+# Recording the steps that I followed on a new raspberry pi 3 to make a non network printer available on network 
+objective was to make printing and scanning available on network
+
+printer: HP deskjet 2300 All in one
+## for printer
+ - install hplip from debain repo `sudo apt-get install hplip`
+ - install cups `sudo apt-get install cups`
+ - add printer to cups from web, and share the printer to allow print from internet
+ - printer should be available on local network to print
+## for scanner
+ - install sane and configure it
+   - follow this guide https://github.com/sbs20/scanservjs/blob/master/docs/sane.md
+   - install sane
+   - add user to group scanner
+   - make sure scanner is detected by `scanimage -L`
+ - install docker (part of above guide)
+ - start scansrvjs docker container
+ - set static IP for pi in router
+ - (optional) install cloudflared to expose it to internet 

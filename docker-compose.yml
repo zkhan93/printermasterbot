@@ -1,0 +1,12 @@
+services:
+  printermasterbot:
+    image: printermasterbot
+    container_name: printermasterbot
+    restart: always
+    devices:
+      - /dev/usb/lp0:/dev/usb/lp0
+    volumes:
+      - /var/run/cups/cups.sock:/var/run/cups/cups.sock
+    environment:
+      - TOKEN=123456789:ABCDEFGHIJKLMNOPQRSTUVWXYZ
+      - ALLOWED_USERNAMES=user1,user2,user3

@@ -2,6 +2,8 @@
 Description=telegram bot for printing
 
 [Service]
+Environment="TOKEN=123456789:ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+Environment="ALLOWED_USERNAMES=user1,user2,user3"
 User=pi
 WorkingDirectory=/home/pi/printermasterbot
 ExecStart=/home/pi/.local/bin/pipenv run python bot.py
